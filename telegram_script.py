@@ -27,7 +27,6 @@ bot = Bot(token=TOKEN)
 # Store last processed message ID to prevent duplicates
 last_message_id = 0
 
-
 async def check_latest_message():
     """Fetches the latest message every minute and processes it."""
     global last_message_id

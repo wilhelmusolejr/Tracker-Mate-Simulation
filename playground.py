@@ -1,27 +1,52 @@
+import asyncio
+import logging
 import time
-import random
+from telegram import Bot
+from telegram.constants import ParseMode
+
+# Telegram Bot Token
+TOKEN = "7652072253:AAGlvJ2UNtQNousCQF1Ld8MncU6GicxkRSU"
+
+# Initialize bot
+bot = Bot(token=TOKEN)
+
+# Store last processed message ID to prevent duplicates
+last_message_id = 0
 
 
-states = ['ingame', 'waiting']
-initial_message = "waiting"
-last_message = None
+async def check_latest_message():
+    """Fetches the latest message every minute and processes it."""
+    global last_message_id
 
-run_times = 1
+    while True:
+        try:
+            updates = await bot.get_updates(offset=-1)  # Get latest update
+            if updates:
+                latest_message = updates[-1].message
 
-while True:
-  last_message = random.choice(states)
-  
-  if(last_message == "ingame"):
-    print("Currently in game")
-    time.sleep(10)
-  
-  if(last_message == "waiting"):
-    print("Ready now")
-    time.sleep(5)
-  
-  print(run_times)
-  run_times += 1
-  print("Bot running")
-  print(last_message)
+                if latest_message and latest_message.message_id != last_message_id:
+                    last_message_id = latest_message.message_id  # Update last message ID
+                    last_text = latest_message.text.lower()  # Get latest message text
 
-  
+                    print(f"Latest message: {last_text}")
+
+                    if last_text == "waiting":
+                        print("Action: Pressed ready button")
+                    elif last_text == "ingame":
+                        print("Game started - Running in-game actions")
+
+            await asyncio.sleep(60)  # Wait for 1 minute before checking again
+
+        except Exception as e:
+            logging.error(f"Error fetching updates: {e}")
+            await asyncio.sleep(10)  # Wait 10 seconds before retrying
+
+
+async def main():
+    """Main function to run the bot."""
+    print("Bot is running... checking for messages every 1 minute.")
+    await check_latest_message()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
