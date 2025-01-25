@@ -1,52 +1,15 @@
-import asyncio
-import logging
+from pynput.mouse import Controller
 import time
-from telegram import Bot
-from telegram.constants import ParseMode
 
-# Telegram Bot Token
-TOKEN = "7652072253:AAGlvJ2UNtQNousCQF1Ld8MncU6GicxkRSU"
+# Create mouse controller
+mouse = Controller()
 
-# Initialize bot
-bot = Bot(token=TOKEN)
+# Simulate relative mouse movements
+time.sleep(4)  # Wait to focus the game window
 
-# Store last processed message ID to prevent duplicates
-last_message_id = 0
+# Move mouse relative to the center of the screen
+for i in range(100):
+    mouse.move(10, 0)  # Move right by 10 pixels
+    time.sleep(0.02)  # Adjust time for smoothness
 
-
-async def check_latest_message():
-    """Fetches the latest message every minute and processes it."""
-    global last_message_id
-
-    while True:
-        try:
-            updates = await bot.get_updates(offset=-1)  # Get latest update
-            if updates:
-                latest_message = updates[-1].message
-
-                if latest_message and latest_message.message_id != last_message_id:
-                    last_message_id = latest_message.message_id  # Update last message ID
-                    last_text = latest_message.text.lower()  # Get latest message text
-
-                    print(f"Latest message: {last_text}")
-
-                    if last_text == "waiting":
-                        print("Action: Pressed ready button")
-                    elif last_text == "ingame":
-                        print("Game started - Running in-game actions")
-
-            await asyncio.sleep(60)  # Wait for 1 minute before checking again
-
-        except Exception as e:
-            logging.error(f"Error fetching updates: {e}")
-            await asyncio.sleep(10)  # Wait 10 seconds before retrying
-
-
-async def main():
-    """Main function to run the bot."""
-    print("Bot is running... checking for messages every 1 minute.")
-    await check_latest_message()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    # You could adjust for more complex movement or add loops for continuous movements.
