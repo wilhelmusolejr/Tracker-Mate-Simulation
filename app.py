@@ -15,7 +15,6 @@ ready_interval = 10  # Click the ready button every 10 seconds
 print(f"Move to the game in {initial_waiting_time} seconds")
 time.sleep(initial_waiting_time)
 
-
 num = 0
 while True:
   print("Firing", num)
