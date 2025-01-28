@@ -12,9 +12,6 @@ recording_event = threading.Event()  # This will control recording state
 # Record Keyboard Events
 def on_press(key):
     try:
-        if key == keyboard.Key.f2:  # Ignore F2 key
-            return
-        
         key_value = key.char  # Get character key
     except AttributeError:
         key_value = str(key)  # Get special key as string
