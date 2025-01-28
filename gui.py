@@ -130,5 +130,4 @@ keyboard.add_hotkey("f11", start_playback)
 keyboard.add_hotkey("f12", stop_playback)
 
 # Run the GUI
-root.iconbitmap('C:\\Users\\Administrator\\Desktop\\Programming\\cheese\\icon.ico')
 root.mainloop()
