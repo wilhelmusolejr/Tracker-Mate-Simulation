@@ -1,11 +1,6 @@
 import requests
-import json
 from datetime import datetime
 import platform
-import sys
-import os
-
-from machine import get_machine_id
 
 
 def get_visitor_info():
