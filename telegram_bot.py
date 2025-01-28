@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get values from .env
-TOKEN = os.getenv("TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TOKEN = "7649581310:AAG9flCCYC_odicG3TqhgQZfpbwmskm7mv4"
+CHAT_ID = "1559668342"
 
 async def send_telegram_notification(message):
     """Send a notification to Telegram asynchronously"""
