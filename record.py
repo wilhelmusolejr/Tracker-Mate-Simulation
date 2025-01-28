@@ -33,7 +33,6 @@ def on_move(x, y):
         recorded_events.append({"type": "mouse", "event": "move", "x": x, "y": y, "time": time.time()})
 
 def on_click(x, y, button, pressed):
-    print(button, pressed)
     if recording_event.is_set():  # Check if the event is set (recording is active)
         recorded_events.append({"type": "mouse", "event": "click", "x": x, "y": y, "button": str(button), "pressed": pressed, "time": time.time()})
 
