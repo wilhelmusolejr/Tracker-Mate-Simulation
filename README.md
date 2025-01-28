@@ -15,7 +15,6 @@ The repeat count allows you to set how many times the playback should repeat.
 ## Links
 
 - **Project link:** [Tracker Mate Simulation](http://wilhelmus.vercel.app/project/tracker-mate-simulation)
-- **GitHub link:** [Repository](https://github.com/wilhelmusolejr)
 
 ## Developed by
 **Wilhelmus Ole**  
