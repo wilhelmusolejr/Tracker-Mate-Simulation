@@ -51,7 +51,6 @@ def play_recording():
                 else:
                     mouse.release(button)
 
-    print("Playback Finished!")
 
 # Ensure script does not auto-run when imported
 if __name__ == "__main__":

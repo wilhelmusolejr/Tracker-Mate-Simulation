@@ -10,7 +10,7 @@ stop_playback_flag = False
 
 # Start recording function
 def start_recording():
-    messagebox.showinfo("Info", "Recording started!")
+    # messagebox.showinfo("Info", "Recording started!")
     status_label.config(text="Status: Recording...")
 
     recording_event.set()  # Start recording
@@ -29,7 +29,7 @@ def start_recording():
 def stop_recording():
     recording_event.clear()
     save_to_file()
-    messagebox.showinfo("Info", "Recording stopped!")
+    # messagebox.showinfo("Info", "Recording stopped!")
     status_label.config(text="Status: Recording stopped")
     
 # Play recording function
@@ -81,7 +81,7 @@ def stop_playback():
 # GUI Setup
 root = tk.Tk()
 root.title("Keyboard & Mouse Recorder")
-root.geometry("300x300")
+root.geometry("300x350")
 
 # Keep the window always on top
 root.attributes("-topmost", True)
@@ -97,14 +97,10 @@ root.grid_rowconfigure(3, weight=1)
 root.grid_rowconfigure(4, weight=1)
 
 # Buttons (using grid, centered in the window)
-tk.Button(root, text="Ctrl + F1 = Start Recording", command=start_recording).grid(row=0, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
-tk.Button(root, text="Ctrl + F2 = Stop Recording", command=stop_recording).grid(row=1, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
-
-# Horizontal line (separator)
-ttk.Separator(root, orient="horizontal").grid(row=2, column=0, padx=10, pady=10, sticky="ew")
-
-tk.Button(root, text="Ctrl + F3 = Start Playback", command=start_playback).grid(row=3, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
-tk.Button(root, text="Ctrl + F4 = Stop Playback", command=stop_playback).grid(row=4, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
+tk.Button(root, text="F9 = Start Recording", command=start_recording).grid(row=0, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
+tk.Button(root, text="F10 = Stop Recording", command=stop_recording).grid(row=1, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
+tk.Button(root, text="F11 = Start Playback", command=start_playback).grid(row=3, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
+tk.Button(root, text="F12 = Stop Playback", command=stop_playback).grid(row=4, column=0, pady=10, padx=10, sticky="ew", ipadx=10, ipady=5)
 
 root.grid_columnconfigure(0, weight=1, uniform="equal")
 root.grid_columnconfigure(1, weight=1, uniform="equal")
@@ -121,13 +117,17 @@ repeat_entry.focus_set()  # Ensure the entry widget gets focus on startup
 
 # Status label (using grid)
 status_label = tk.Label(root, text="Status: Waiting", font=("Arial", 12))
-status_label.grid(row=7, column=0, columnspan=2, pady=10)
+status_label.grid(row=7, column=0, columnspan=2, pady=5)
+
+# Status label (using grid)
+status_label = tk.Label(root, text="Developed by TC.666", font=("Arial", 12))
+status_label.grid(row=8, column=0, columnspan=2, pady=5)
 
 # Register global hotkeys
-keyboard.add_hotkey("ctrl+f1", start_recording)
-keyboard.add_hotkey("ctrl+f2", stop_recording)
-keyboard.add_hotkey("ctrl+f3", start_playback)
-keyboard.add_hotkey("ctrl+f4", stop_playback)
+keyboard.add_hotkey("f9", start_recording)
+keyboard.add_hotkey("f10", stop_recording)
+keyboard.add_hotkey("f11", start_playback)
+keyboard.add_hotkey("f12", stop_playback)
 
 # Run the GUI
 root.mainloop()
