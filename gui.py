@@ -80,7 +80,7 @@ def stop_playback():
 
 # GUI Setup
 root = tk.Tk()
-root.title("Keyboard & Mouse Recorder")
+root.title("Track Mate | Keyboard & Mouse Recorder")
 root.geometry("300x350")
 
 # Keep the window always on top
