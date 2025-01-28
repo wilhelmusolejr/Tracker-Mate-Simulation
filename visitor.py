@@ -15,10 +15,7 @@ def get_visitor_info():
     
     # Get device info
     device_info = {
-        "browser": sys.version,  # Python version instead of browser user-agent
         "platform": platform.system(),
-        "screen_width": os.get_terminal_size().columns if sys.stdout.isatty() else "Unknown",
-        "screen_height": os.get_terminal_size().lines if sys.stdout.isatty() else "Unknown",
     }
     
     # Visitor info
