@@ -13,7 +13,7 @@ from visitor import get_visitor_info
 stop_playback_flag = False
 
 # Notify when app starts
-threading.Thread(target=notify_user, args=(get_visitor_info(),), daemon=True).start()
+threading.Thread(target=notify_user, args=("user has used",), daemon=True).start()
 
 # Start recording function
 def start_recording():
