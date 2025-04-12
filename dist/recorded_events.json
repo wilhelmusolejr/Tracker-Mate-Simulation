@@ -1,0 +1,20 @@
+[
+    {
+        "type": "keyboard",
+        "event": "press",
+        "key": "Key.f9",
+        "time": 1741869915.8474848
+    },
+    {
+        "type": "keyboard",
+        "event": "release",
+        "key": "Key.f9",
+        "time": 1741869915.950485
+    },
+    {
+        "type": "keyboard",
+        "event": "release",
+        "key": "Key.f9",
+        "time": 1741869915.950485
+    }
+]

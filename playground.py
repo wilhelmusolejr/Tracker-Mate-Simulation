@@ -1,15 +1,25 @@
-from pynput.mouse import Controller
+from pynput.keyboard import Controller
 import time
+from pynput.mouse import Controller as MouseController, Button
 
-# Create mouse controller
-mouse = Controller()
+keyboard = Controller()
+mouse = MouseController()
 
-# Simulate relative mouse movements
-time.sleep(4)  # Wait to focus the game window
+def press_key_for_seconds(key, duration):
+    keyboard.press(key)
+    time.sleep(duration)
+    keyboard.release(key)
 
-# Move mouse relative to the center of the screen
-for i in range(100):
-    mouse.move(10, 0)  # Move right by 10 pixels
-    time.sleep(0.02)  # Adjust time for smoothness
+num = 0
+while True:
+    print("Pressing W for 3 seconds...")
+    press_key_for_seconds('w', 1)
+    
+    print("Firing", num)
+    mouse.click(Button.left, 1)
+    time.sleep(1)
+    mouse.click(Button.left, 1)
+    num += 1
 
-    # You could adjust for more complex movement or add loops for continuous movements.
+    print("Pressing A for 3 seconds...")
+    press_key_for_seconds('a', 5)
